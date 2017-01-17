@@ -1,0 +1,30 @@
+{
+  "name": "tnssolution.github.io",
+  "version": "1.0.0",
+  "description": "Static HTML for tnssolution website",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tnssolution/tnssolution.github.io.git"
+  },
+  "keywords": [
+    "TNS",
+    "software",
+    "solution",
+    "and",
+    "technology"
+  ],
+  "author": "Lytay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tnssolution/tnssolution.github.io/issues"
+  },
+  "homepage": "https://github.com/tnssolution/tnssolution.github.io#readme"
+}
