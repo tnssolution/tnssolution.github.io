@@ -7,6 +7,7 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	merge = require('merge-stream'),
 	browserSync = require('browser-sync'),
+	runSequence = require('run-sequence'),
 	del = require('del');
 
 gulp.task('js', function(){
