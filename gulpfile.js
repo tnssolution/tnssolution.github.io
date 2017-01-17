@@ -1,17 +1,23 @@
 var gulp = require('gulp'),
-	file = require('gulp-file');
+	file = require('gulp-file'),
+	concat = require('gulp-concat'),
+	del = require('del');
 
-gulp.task('one', function(){
-	console.log('Task one is triggered!');
+gulp.task('js', function(){
+	console.log('Task js is triggered!');
 });
 
-gulp.task('two', function(){
-	console.log('Task two is triggered!');
+gulp.task('css', function(){
+	console.log('Task css is triggered!');
 });
 
-gulp.task('setup', function(){
-	console.log("Setup is actived !");
+gulp.task('html', function(){
+	console.log('Task html is triggered!');
 });
-gulp.task('default', ['one', 'two'], function(){
+
+gulp.task('clean', function(){
+	console.log('Task clean is triggered!');
+});
+gulp.task('default', ['clean', 'html', 'css', 'js'], function(){
 	console.log('Gulp Default Task is triggerd !');
 });
