@@ -10,14 +10,6 @@ var gulp = require('gulp'),
 	runSequence = require('run-sequence'),
 	del = require('del');
 
-gulp.task('js', function(){
-	console.log('Task js is triggered!');
-	gulp.src(['src/js/**/*.js'])
-		.pipe(plumber())
-		.pipe(concat('app.js'))
-		.pipe(gulp.dest('./js/'));
-});
-
 gulp.task('mergeJS', function(){
 	console.log('Task mergeJS is triggered!');
 	var coffeeScriptStream = gulp.src(['src/coffee/**/*.coffee'])
@@ -48,7 +40,7 @@ gulp.task('mergeCSS', function(){
 	var cssStream = gulp.src(['src/css/*.css', './css/*.css'])
 		.pipe(plumber())
 		.pipe(concat('app_css.css'));
-	var mergedStream =	merge(cssStream, sassStream, lessStream)
+	var mergedStream = merge(cssStream, sassStream, lessStream)
 		.pipe(plumber())
 		.pipe(concat('app.css'))
 		.pipe(gulp.dest('./css/'));
@@ -57,24 +49,20 @@ gulp.task('mergeCSS', function(){
 
 gulp.task('html', function(){
 	console.log('Task html is triggered!');
-	var str = 'Task html is triggered!';
 	return gulp.src(['src/html/header.html', 'src/html/script.html', 'src/html/footer.html'])
 			.pipe(concat('index.html'))
 			.pipe(gulp.dest('./'));
 });
 
-gulp.task('generateHTML', function(){
-
-});
-
 gulp.task('clean', function(){
 	console.log('Task clean is triggered!');
-	del(['./**/*', '!./src/**', '!./README.md', '!./.gitignore', '!./package.json', '!./gulpfile.js', '!./node_modules/**'], {dryRun: false, force: false})
+	return del(['./**/*', '!./src/**', '!./README.md', '!./.gitignore', '!./package.json', '!./gulpfile.js', '!./node_modules/**'], {dryRun: false, force: false})
 		.then(paths => {
 			console.log('Files and folders that would be deleted:\n', paths.join('\n'));
 		});
 });
 
-gulp.task('default', ['clean', 'mergeCSS', 'html', 'mergeJS'], function(){
+gulp.task('default', function(cb){
 	console.log('Gulp Default Task is triggerd !');
+	runSequence('clean',['mergeCSS', 'mergeJS','html'],cb);
 });
