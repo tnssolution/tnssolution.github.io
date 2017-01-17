@@ -1,8 +1,3 @@
-(function() {
-
-
-}).call(this);
-
 // index_js.js
 
 function test(){
@@ -13,3 +8,7 @@ test();
 function Hello(){
 	console.log('Hello Button is clicked!');
 }
+(function() {
+
+
+}).call(this);
