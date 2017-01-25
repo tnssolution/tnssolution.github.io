@@ -1,16 +1,17 @@
 var gulp = require('gulp'),
-	plugins = require('gulp-load-plugins');
+	plugins = require('gulp-load-plugins')(),
+	runSequence = require('run-sequence'),
 	config = require('../../gulpconfig');
-	del = require('del');
 
+require('./clean')(gulp, plugins, config);
+require('./styles')(gulp, plugins, config);
 require('./scripts')(gulp, plugins, config);
-require('./clean')(gulp, del, config);
+require('./html')(gulp, plugins, config);
 
-gulp.task('default', function(){
-	console.log("Default task is actived! ");
-	console.log(plugins);
+gulp.task('default', function(cb){
+	console.log('Gulp Default Task is triggerd !');
+	runSequence('clean',['mergeCSS', 'mergeJS','html'],cb);
 });
-
 
 
 module.exports = function(gulp, plugins, config){
