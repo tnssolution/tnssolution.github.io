@@ -18,6 +18,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
     "merge-stream": "^1.0.1",
+    "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "semantic-ui": "^2.2.7"
   },
