@@ -15,7 +15,7 @@ module.exports = function(gulp, plugins, config){
 		var cssStream = gulp.src(['src/css/*.css', './css/*.css'])
 			.pipe(plugins.plumber())
 			.pipe(plugins.concat('app_css.css'));
-		var cssSemanticUI = gulp.src(['./semantic/dist/semantic.min.css'])
+		var cssSemanticUI = gulp.src(config.semantic_ui.semnatic_cssPath)
 			.pipe(plugins.plumber())
 			.pipe(plugins.concat('semantic_css.css'))
 		var mergedStream = merge(cssSemanticUI, sassStream, lessStream, cssStream)

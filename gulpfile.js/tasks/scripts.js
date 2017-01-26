@@ -9,7 +9,7 @@ gulp.task('mergeJS', function(cb){
 		.pipe(plugins.plumber())
 		.pipe(plugins.concat('jquery_js.js'));
 
-	var jsSemanticUI = gulp.src(['./semantic/dist/semantic.min.js'])
+	var jsSemanticUI = gulp.src(config.semantic_ui.semantic_jsPath)
 		.pipe(plugins.plumber())
 		.pipe(plugins.concat('semantic_js.js'));
 	
@@ -25,7 +25,7 @@ gulp.task('mergeJS', function(cb){
 	var mergeJS = merge(jsJQuery, jsSemanticUI, coffeeScriptStream, jsStream)
 		.pipe(plugins.plumber())
 		.pipe(plugins.concat('app.js'))
-		.pipe(plugins.uglify())
+		// .pipe(plugins.uglify())
 		.pipe(gulp.dest('./js/'));
 	return mergeJS;
 });
