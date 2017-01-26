@@ -2,7 +2,7 @@ var merge = require('merge2');
 
 module.exports = function(gulp, plugins, config){
 
-	gulp.task('mergeCSS' ,function(){
+	gulp.task('mergeCSS', ['copyFont'], function(){
 		console.log("merge style combination task is triggered!");
 		var sassStream = gulp.src(['src/sass/**/*.scss'])
 			.pipe(plugins.plumber())
@@ -24,6 +24,11 @@ module.exports = function(gulp, plugins, config){
 			.pipe(plugins.uglifycss({'maxLineLen': 10, 'uglyComments': true}))
 			.pipe(gulp.dest('./css/'));
 		return mergedStream;
+	});
+	gulp.task('copyFont', function(){
+		console.log('copyFont task is activated...');
+		gulp.src(config.semantic_ui.sourceFontPath)
+			.pipe(gulp.dest(config.semantic_ui.destFontPath));
 	});
 
 }
